@@ -189,7 +189,7 @@
             <span class="symbol"
               >{{ symbol }}
               <a
-                href="{{ 'https://www.tradingview.com/chart/?symbol=' + ('BINANCE:' if scanner_type == 'crypto' else 'NASDAQ:') + symbol.split('/')[0] }}"
+                href="{{ 'https://www.tradingview.com/chart/?symbol=' + (('BINANCE:' + symbol.replace('/', '')) if scanner_type == 'crypto' else 'NASDAQ:' + symbol.split('/')[0]) }}"
                 target="_blank"
                 title="Bekijk op TradingView"
                 style="margin-left: 8px"
@@ -216,7 +216,7 @@
             <span class="symbol"
               >{{ symbol }}
               <a
-                href="{{ 'https://www.tradingview.com/chart/?symbol=' + ('BINANCE:' if scanner_type == 'crypto' else 'NASDAQ:') + symbol.split('/')[0] }}"
+                href="{{ 'https://www.tradingview.com/chart/?symbol=' + (('BINANCE:' + symbol.replace('/', '')) if scanner_type == 'crypto' else 'NASDAQ:' + symbol.split('/')[0]) }}"
                 target="_blank"
                 title="Bekijk op TradingView"
                 style="margin-left: 8px"
