@@ -1,0 +1,61 @@
+{
+    "Trendvolgend (MA)": {
+        "beschrijving": "MA50 boven MA200 en prijs boven MA50 (koop) of MA50 onder MA200 en prijs onder MA50 (verkoop).",
+        "matches": [
+            [
+                "GME",
+                28.637699127197266,
+                null
+            ],
+            [
+                "PLTR",
+                129.3000030517578,
+                null
+            ],
+            [
+                "NET",
+                155.4149932861328,
+                null
+            ],
+            [
+                "VRSN",
+                281.19049072265625,
+                null
+            ],
+            [
+                "AVGO",
+                228.86000061035156,
+                null
+            ]
+        ],
+        "verkoop_matches": [
+            [
+                "PACB",
+                0.9702000021934509,
+                null
+            ],
+            [
+                "FCEL",
+                4.0,
+                null
+            ],
+            [
+                "AVTX",
+                3.950000047683716,
+                null
+            ],
+            [
+                "BYND",
+                2.4749999046325684,
+                null
+            ],
+            [
+                "PLUG",
+                0.7217000126838684,
+                null
+            ]
+        ],
+        "best_price": 28.637699127197266,
+        "best_verkoop_price": 4.0
+    }
+}

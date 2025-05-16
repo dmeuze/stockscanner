@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scan Resultaten</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .strategy {
+        margin-bottom: 30px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      .strategy h2 {
+        color: #2c3e50;
+        margin-top: 0;
+      }
+      .strategy p {
+        color: #666;
+        margin-bottom: 15px;
+      }
+      .matches {
+        margin-top: 15px;
+      }
+      .match {
+        background-color: #f8f9fa;
+        padding: 10px;
+        margin-bottom: 5px;
+        border-radius: 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .match.koop {
+        border-left: 4px solid #28a745;
+      }
+      .match.verkoop {
+        border-left: 4px solid #dc3545;
+      }
+      .symbol {
+        font-weight: bold;
+        color: #2c3e50;
+      }
+      .price {
+        color: #666;
+      }
+      .extra {
+        color: #888;
+        font-size: 0.9em;
+      }
+      .best-price {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #e9ecef;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+      .best-price.koop {
+        color: #28a745;
+      }
+      .best-price.verkoop {
+        color: #dc3545;
+      }
+      .back-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+      .back-button:hover {
+        background-color: #0056b3;
+      }
+      .no-matches {
+        color: #666;
+        font-style: italic;
+      }
+      .status-container {
+        margin-bottom: 20px;
+        padding: 15px;
+        border-radius: 4px;
+        display: block;
+      }
+      .status-container.loading {
+        background-color: #e3f2fd;
+        border: 1px solid #90caf9;
+      }
+      .status-container.success {
+        display: block;
+        background-color: #e8f5e9;
+        border: 1px solid #81c784;
+      }
+      .status-container.error {
+        display: block;
+        background-color: #ffebee;
+        border: 1px solid #e57373;
+      }
+      .spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .status-message {
+        display: inline-block;
+        vertical-align: middle;
+        color: #333;
+        font-weight: 500;
+      }
+      .status-container.success .status-message {
+        color: #2e7d32;
+      }
+      .status-container.error .status-message {
+        color: #c62828;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="button-container">
+        <a href="/" class="button back-button">← Terug naar Home</a>
+        <button onclick="refreshResults()" class="button refresh-button">
+          🔄 Ververs Resultaten
+        </button>
+        <button
+          onclick="refreshAll()"
+          class="button refresh-button"
+          style="background: #ff9800; margin-left: 10px"
+        >
+          ♻️ Ververs Alles
+        </button>
+      </div>
+
+      <div id="statusContainer" class="status-container {{ status }}">
+        <div
+          class="spinner"
+          id="statusSpinner"
+          style="display: {{ 'inline-block' if status == 'loading' else 'none' }};"
+        ></div>
+        <span class="status-message">{{ message }}</span>
+      </div>
+
+      <h1>Scan Resultaten</h1>
+      {% for naam, data in strategieen.items() %}
+      <div class="strategy">
+        <h2>{{ naam }}</h2>
+        <p>{{ data.beschrijving }}</p>
+
+        {% if data.matches %}
+        <div class="matches">
+          <h3>Koop Signalen</h3>
+          {% for symbol, price, extra in data.matches %}
+          <div class="match koop">
+            <span class="symbol"
+              >{{ symbol }}
+              <a
+                href="{{ 'https://www.tradingview.com/chart/?symbol=' + ('BINANCE:' if scanner_type == 'crypto' else 'NASDAQ:') + symbol.split('/')[0] }}"
+                target="_blank"
+                title="Bekijk op TradingView"
+                style="margin-left: 8px"
+              >
+                <img
+                  src="https://s3.tradingview.com/static/bundles/TradingView/favicons/favicon-32x32.png"
+                  alt="TradingView"
+                  style="width: 16px; height: 16px; vertical-align: middle"
+                />
+              </a>
+            </span>
+            <span class="price">${{ "%.2f"|format(price) }}</span>
+            {% if extra is not none %}
+            <span class="extra">{{ extra }}</span>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %} {% if data.verkoop_matches %}
+        <div class="matches">
+          <h3>Verkoop Signalen</h3>
+          {% for symbol, price, extra in data.verkoop_matches %}
+          <div class="match verkoop">
+            <span class="symbol"
+              >{{ symbol }}
+              <a
+                href="{{ 'https://www.tradingview.com/chart/?symbol=' + ('BINANCE:' if scanner_type == 'crypto' else 'NASDAQ:') + symbol.split('/')[0] }}"
+                target="_blank"
+                title="Bekijk op TradingView"
+                style="margin-left: 8px"
+              >
+                <img
+                  src="https://s3.tradingview.com/static/bundles/TradingView/favicons/favicon-32x32.png"
+                  alt="TradingView"
+                  style="width: 16px; height: 16px; vertical-align: middle"
+                />
+              </a>
+            </span>
+            <span class="price">${{ "%.2f"|format(price) }}</span>
+            {% if extra is not none %}
+            <span class="extra">{{ extra }}</span>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %} {% if not data.matches and not data.verkoop_matches %}
+        <p class="no-matches">Geen matches gevonden voor deze strategie.</p>
+        {% endif %} {% if data.best_price is not none %}
+        <div class="best-price koop">
+          Beste koop prijs: ${{ "%.2f"|format(data.best_price) }}
+        </div>
+        {% endif %} {% if data.best_verkoop_price is not none %}
+        <div class="best-price verkoop">
+          Beste verkoop prijs: ${{ "%.2f"|format(data.best_verkoop_price) }}
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    <script>
+      function showStatus(type, message) {
+        const container = document.getElementById("statusContainer");
+        container.className = "status-container " + type;
+        container.querySelector(".status-message").textContent = message;
+        // Spinner alleen tonen bij loading
+        const spinner = document.getElementById("statusSpinner");
+        if (type === "loading") {
+          spinner.style.display = "inline-block";
+        } else {
+          spinner.style.display = "none";
+        }
+      }
+
+      function refreshResults() {
+        showStatus("loading", "Alleen gevonden resultaten worden ververst...");
+        const urlParts = window.location.pathname.split("/");
+        const scannerType = urlParts[2];
+        const strategy = urlParts[3];
+        // Verzamel alle unieke symbolen uit matches en verkoop_matches
+        const symbols = Array.from(
+          new Set([
+            ...Array.from(document.querySelectorAll(".match.koop .symbol")).map(
+              (e) => e.childNodes[0].nodeValue.trim()
+            ),
+            ...Array.from(
+              document.querySelectorAll(".match.verkoop .symbol")
+            ).map((e) => e.childNodes[0].nodeValue.trim()),
+          ])
+        );
+        // Stuur de symbolen als query parameter
+        window.location.href = `/do_scan/${scannerType}/${strategy}?symbols=${symbols.join(
+          ","
+        )}`;
+      }
+
+      function refreshAll() {
+        showStatus("loading", "Volledige scan wordt uitgevoerd...");
+        const urlParts = window.location.pathname.split("/");
+        const scannerType = urlParts[2];
+        const strategy = urlParts[3];
+        window.location.href = `/do_scan/${scannerType}/${strategy}`;
+      }
+
+      window.onload = function () {
+        const status = "{{ status }}";
+        const message = "{{ message }}";
+        if (status && message) {
+          showStatus(status, message);
+        }
+      };
+    </script>
+  </body>
+</html>

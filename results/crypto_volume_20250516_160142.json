@@ -1,0 +1,9 @@
+{
+    "Volume Spike": {
+        "beschrijving": "Volume is > 1.5x het 30-daags gemiddelde: mogelijk institutionele aankoop/verkoop.",
+        "matches": [],
+        "verkoop_matches": [],
+        "best_price": null,
+        "best_verkoop_price": null
+    }
+}

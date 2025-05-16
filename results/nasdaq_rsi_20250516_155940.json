@@ -1,0 +1,35 @@
+{
+    "RSI Oversold/Overbought": {
+        "beschrijving": "Detecteert oververkochte (RSI < 30) en overgekochte (RSI > 70) situaties.",
+        "matches": [],
+        "verkoop_matches": [
+            [
+                "GCT",
+                18.610000610351562,
+                71.98
+            ],
+            [
+                "NET",
+                155.47000122070312,
+                76.97
+            ],
+            [
+                "AVGO",
+                228.10000610351562,
+                70.52
+            ],
+            [
+                "MSFT",
+                449.94000244140625,
+                73.31
+            ],
+            [
+                "NVDA",
+                135.39999389648438,
+                72.92
+            ]
+        ],
+        "best_price": null,
+        "best_verkoop_price": 449.94000244140625
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "MACD Crossover": {
+        "beschrijving": "MACD-lijn kruist boven signaallijn (koop) of onder signaallijn (verkoop).",
+        "matches": [],
+        "verkoop_matches": [
+            [
+                "PACB",
+                0.983299970626831,
+                null
+            ]
+        ],
+        "best_price": null,
+        "best_verkoop_price": 0.983299970626831
+    }
+}

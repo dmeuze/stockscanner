@@ -1,0 +1,15 @@
+{
+    "Trendvolgend (MA)": {
+        "beschrijving": "MA50 boven MA200 en prijs boven MA50 (koop) of MA50 onder MA200 en prijs onder MA50 (verkoop).",
+        "matches": [
+            [
+                "XRP/USDT",
+                2.4378,
+                null
+            ]
+        ],
+        "verkoop_matches": [],
+        "best_price": 2.4378,
+        "best_verkoop_price": null
+    }
+}

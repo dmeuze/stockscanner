@@ -1,0 +1,172 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Crypto Screener - Bollinger Bounce</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+                background-color: #f5f5f5;
+            }
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
+            h1 {
+                color: #333;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            .description {
+                text-align: center;
+                color: #666;
+                margin-bottom: 30px;
+                font-style: italic;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th, td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+                background-color: #f8f9fa;
+                font-weight: bold;
+            }
+            tr:hover {
+                background-color: #f5f5f5;
+            }
+            .price {
+                font-weight: bold;
+                color: #28a745;
+            }
+            .sell-signals {
+                color: #dc3545;
+                font-size: 0.9em;
+            }
+            .sell-signal-item {
+                margin: 5px 0;
+                padding: 5px;
+                background-color: #fff3f3;
+                border-left: 3px solid #dc3545;
+            }
+            .timestamp {
+                text-align: center;
+                color: #666;
+                margin-top: 30px;
+                font-size: 0.9em;
+            }
+            .refresh-container {
+                text-align: center;
+                margin: 20px 0;
+            }
+            .refresh-button {
+                background-color: #007bff;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 14px;
+                transition: background-color 0.3s;
+            }
+            .refresh-button:hover {
+                background-color: #0056b3;
+            }
+            .refresh-button:disabled {
+                background-color: #ccc;
+                cursor: not-allowed;
+            }
+            .auto-refresh {
+                margin-left: 10px;
+                color: #666;
+            }
+            .auto-refresh input {
+                margin-right: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Crypto Screener - Bollinger Bounce</h1>
+            <p class="description">Koers onder onderste Bollinger Band: kans op pullback reversal.</p>
+            
+            <div class="refresh-container">
+                <button class="refresh-button" onclick="refreshData()">Ververs Data</button>
+                <span class="auto-refresh">
+                    <input type="checkbox" id="autoRefresh" onchange="toggleAutoRefresh()">
+                    <label for="autoRefresh">Auto verversen elke 5 minuten</label>
+                </span>
+            </div>
+            
+            <table>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Huidige Prijs</th>
+                    <th>Verkoopsignalen</th>
+                </tr>
+                
+                <tr>
+                    <td>USDC/USDT</td>
+                    <td class="price">$1.00</td>
+                    <td class="sell-signals">
+                        <div class="sell-signal-item">MACD kruist onder signaallijn: Bearish shift</div><div class="sell-signal-item">Prijs onder MA50: Trendbreuk</div>
+                    </td>
+                </tr>
+                
+            </table>
+            
+            <p class="timestamp" id="lastUpdate">Laatste update: 2025-05-16 14:07:38</p>
+        </div>
+
+        <script>
+            let autoRefreshInterval = null;
+            
+            function updateTimestamp() {
+                const now = new Date();
+                const timestamp = now.toLocaleString('nl-NL');
+                document.getElementById('lastUpdate').textContent = 'Laatste update: ' + timestamp;
+            }
+            
+            function refreshData() {
+                const button = document.querySelector('.refresh-button');
+                button.disabled = true;
+                button.textContent = 'Verversen...';
+                
+                // Simuleer een refresh door de pagina te herladen
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+            }
+            
+            function toggleAutoRefresh() {
+                const checkbox = document.getElementById('autoRefresh');
+                if (checkbox.checked) {
+                    // Start auto-refresh elke 5 minuten
+                    autoRefreshInterval = setInterval(refreshData, 5 * 60 * 1000);
+                } else {
+                    // Stop auto-refresh
+                    if (autoRefreshInterval) {
+                        clearInterval(autoRefreshInterval);
+                        autoRefreshInterval = null;
+                    }
+                }
+            }
+            
+            // Update timestamp elke seconde
+            setInterval(updateTimestamp, 1000);
+        </script>
+    </body>
+    </html>
+    

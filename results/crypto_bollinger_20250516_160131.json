@@ -1,0 +1,9 @@
+{
+    "Bollinger Bounce/Breakdown": {
+        "beschrijving": "Koers onder onderste Bollinger Band (kans op reversal) of boven bovenste band (kans op breakdown).",
+        "matches": [],
+        "verkoop_matches": [],
+        "best_price": null,
+        "best_verkoop_price": null
+    }
+}

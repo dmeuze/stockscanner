@@ -1,0 +1,20 @@
+{
+    "Trendvolgend (MA)": {
+        "beschrijving": "MA50 boven MA200 en prijs boven MA50 (koop) of MA50 onder MA200 en prijs onder MA50 (verkoop).",
+        "matches": [],
+        "verkoop_matches": [
+            [
+                "ONDO/USDT",
+                0.9734,
+                null
+            ],
+            [
+                "LINK/USDT",
+                16.19,
+                null
+            ]
+        ],
+        "best_price": null,
+        "best_verkoop_price": 16.19
+    }
+}

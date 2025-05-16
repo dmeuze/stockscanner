@@ -1,0 +1,163 @@
+
+<html>
+<head>
+    <title>Crypto Screener Dashboard</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 40px; 
+            background: #f9f9f9; 
+            color: #333; 
+        }
+        h1 { 
+            text-align: center; 
+            color: #003366;
+            margin-bottom: 30px;
+        }
+        h2 { 
+            color: #003366; 
+            border-bottom: 2px solid #003366;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            margin-bottom: 40px;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        }
+        th, td { 
+            border: 1px solid #ddd; 
+            padding: 12px; 
+            text-align: center; 
+        }
+        th { 
+            background-color: #003366; 
+            color: white; 
+            font-weight: bold;
+        }
+        tr:nth-child(even) { 
+            background-color: #f2f2f2; 
+        }
+        tr:hover { 
+            background-color: #e9e9e9; 
+        }
+        .groen { 
+            background-color: #d4edda !important; 
+            font-weight: bold; 
+        }
+        .beschrijving {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .geen-matches {
+            color: #666;
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .chart-link {
+            color: #003366;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .chart-link:hover {
+            text-decoration: underline;
+        }
+        .prijs {
+            font-weight: bold;
+            color: #28a745;
+        }
+        .extra-info {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Crypto Screener – 2025-05-16</h1>
+    
+        <h2>RSI Oversold</h2>
+        <p class="beschrijving">Detecteert oververkochte situaties (RSI < 30), mogelijk goede reversals.</p>
+        
+            <div class="geen-matches">Geen matches gevonden voor deze strategie.</div>
+        
+    
+        <h2>Bollinger Bounce</h2>
+        <p class="beschrijving">Koers onder onderste Bollinger Band: kans op pullback reversal.</p>
+        
+            <table>
+                <tr>
+                    <th>Symbool</th>
+                    <th>Prijs</th>
+                    <th>Extra Info</th>
+                    <th>Chart</th>
+                </tr>
+                
+                <tr class="groen">
+                    <td>USDC/USDT</td>
+                    <td class="prijs">$1.00</td>
+                    <td class="extra-info">-</td>
+                    <td><a href="https://www.tradingview.com/symbols/USDCUSDT/" target="_blank" class="chart-link">Bekijk Chart</a></td>
+                </tr>
+                
+            </table>
+        
+    
+        <h2>MACD Crossover</h2>
+        <p class="beschrijving">MACD-lijn kruist boven signaallijn: momentum komt terug.</p>
+        
+            <div class="geen-matches">Geen matches gevonden voor deze strategie.</div>
+        
+    
+        <h2>Trendvolgend (MA)</h2>
+        <p class="beschrijving">MA50 boven MA200 en prijs boven MA50: gezonde uptrend.</p>
+        
+            <table>
+                <tr>
+                    <th>Symbool</th>
+                    <th>Prijs</th>
+                    <th>Extra Info</th>
+                    <th>Chart</th>
+                </tr>
+                
+                <tr class="">
+                    <td>XRP/USDT</td>
+                    <td class="prijs">$2.42</td>
+                    <td class="extra-info">-</td>
+                    <td><a href="https://www.tradingview.com/symbols/XRPUSDT/" target="_blank" class="chart-link">Bekijk Chart</a></td>
+                </tr>
+                
+                <tr class="groen">
+                    <td>TRX/USDT</td>
+                    <td class="prijs">$0.27</td>
+                    <td class="extra-info">-</td>
+                    <td><a href="https://www.tradingview.com/symbols/TRXUSDT/" target="_blank" class="chart-link">Bekijk Chart</a></td>
+                </tr>
+                
+                <tr class="">
+                    <td>MKR/USDT</td>
+                    <td class="prijs">$1874.00</td>
+                    <td class="extra-info">-</td>
+                    <td><a href="https://www.tradingview.com/symbols/MKRUSDT/" target="_blank" class="chart-link">Bekijk Chart</a></td>
+                </tr>
+                
+            </table>
+        
+    
+        <h2>Volume Spike</h2>
+        <p class="beschrijving">Volume is > 1.5x het 30-daags gemiddelde: mogelijk institutionele aankoop.</p>
+        
+            <div class="geen-matches">Geen matches gevonden voor deze strategie.</div>
+        
+    
+        <h2>Golden Cross</h2>
+        <p class="beschrijving">MA50 kruist boven MA200: mogelijk start van een nieuwe uptrend.</p>
+        
+            <div class="geen-matches">Geen matches gevonden voor deze strategie.</div>
+        
+    
+</body>
+</html>

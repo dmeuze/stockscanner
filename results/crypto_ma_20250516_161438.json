@@ -1,0 +1,36 @@
+{
+    "Trendvolgend (MA)": {
+        "beschrijving": "MA50 boven MA200 en prijs boven MA50 (koop) of MA50 onder MA200 en prijs onder MA50 (verkoop).",
+        "matches": [
+            [
+                "BTC/USDT",
+                103650.0,
+                null
+            ],
+            [
+                "PEPE/USDT",
+                1.363e-05,
+                null
+            ],
+            [
+                "ETH/USDT",
+                2591.76,
+                null
+            ]
+        ],
+        "verkoop_matches": [
+            [
+                "ONDO/USDT",
+                0.9758,
+                null
+            ],
+            [
+                "LINK/USDT",
+                16.23,
+                null
+            ]
+        ],
+        "best_price": 1.363e-05,
+        "best_verkoop_price": 16.23
+    }
+}

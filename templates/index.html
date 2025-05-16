@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geïntegreerde Scanner</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .scanner-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+      .scanner-button {
+        padding: 15px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        color: white;
+      }
+      .crypto-button {
+        background-color: #4caf50;
+      }
+      .crypto-button:hover {
+        background-color: #45a049;
+      }
+      .nasdaq-button {
+        background-color: #2196f3;
+      }
+      .nasdaq-button:hover {
+        background-color: #1976d2;
+      }
+      .results {
+        margin-top: 20px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Geïntegreerde Scanner</h1>
+      <div class="scanner-buttons">
+        <a href="/crypto" class="scanner-button crypto-button"
+          >Start Crypto Scanner</a
+        >
+        <a href="/nasdaq" class="scanner-button nasdaq-button"
+          >Start NASDAQ Scanner</a
+        >
+      </div>
+      <div class="button-container" style="margin-top: 30px">
+        <a
+          href="/results_list/crypto"
+          class="button"
+          style="background: #28a745"
+          >📊 Crypto Resultaten</a
+        >
+        <a
+          href="/results_list/nasdaq"
+          class="button"
+          style="background: #ff9800"
+          >📈 NASDAQ Resultaten</a
+        >
+      </div>
+    </div>
+  </body>
+</html>
